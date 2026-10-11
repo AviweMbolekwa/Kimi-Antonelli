@@ -43,7 +43,7 @@ export function initSheet() {
     sheet.setAttribute('role', 'dialog');
     sheet.setAttribute('aria-modal', 'true');
     sheet.setAttribute('aria-label', 'Menu');
-    sheet.innerHTML = `<div class="sheet-top"><a href="/" class="sheet-logo" aria-label="Grido1 Racing Systems"><img src="${asset('hero/ui/grido1-logo.webp')}" alt=""></a><button class="sheet-close" type="button" aria-label="Close menu"><i></i><i></i></button></div>
+    sheet.innerHTML = `<div class="sheet-top"><a href="${import.meta.env.BASE_URL}" class="sheet-logo" aria-label="Grido1 Racing Systems"><img src="${asset('hero/ui/grido1-logo.webp')}" alt=""></a><button class="sheet-close" type="button" aria-label="Close menu"><i></i><i></i></button></div>
       <nav aria-label="Primary"><ul>${LINKS.map(([l, h]) => `<li><a class="ha" href="${h}">${l}</a></li>`).join('')}</ul></nav>`;
     document.body.append(sheet);
     button.setAttribute('aria-expanded', 'true');

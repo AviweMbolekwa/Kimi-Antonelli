@@ -13,6 +13,12 @@ npm run build    # production build in dist/
 npm run preview  # serve dist/
 ```
 
+## Deploy (GitHub Pages)
+
+`.github/workflows/deploy.yml` builds and publishes the site on every push to `main` (or run it by hand from the Actions tab). It builds with `BASE_PATH=/<repo>/`, so the site works at `https://<user>.github.io/<repo>/`. One-time setup: **Settings → Pages → Build and deployment → Source: GitHub Actions**.
+
+To test the Pages build locally: `BASE_PATH=/Kimi-Antonelli/ npm run build && BASE_PATH=/Kimi-Antonelli/ npm run preview`, then open `/Kimi-Antonelli/`.
+
 Assets are served from `public/assets/`. To serve them from a CDN instead, build with `VITE_ASSET_BASE_URL=https://your-cdn/path npm run build`.
 
 ## Structure
