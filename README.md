@@ -1,6 +1,6 @@
 # Kimi Antonelli — GRID01 Racing Systems
 
-Racing-driver showcase: a WebGL hero (depth-parallax portrait + 3D helmet that burns in and follows the cursor), a loading veil, sticky stacked sections, an animated race-lap map, a parallax timeline, a stats/calendar "paddock" section and a contour-line footer.
+Racing-driver showcase in the spirit of landonorris.com: a WebGL hero (depth-parallax portrait + 3D helmet that burns in and follows the cursor), a loading veil, a pinned "message from Kimi" beat (portrait shrinks into a frame, quote marquees, hand-drawn signature), sticky stacked sections, an animated race-lap map, a parallax timeline, a stats/calendar "paddock" section and a contour-line footer.
 
 Stack: Vite + vanilla JS (ES modules) + [Three.js](https://threejs.org) 0.185 + [Lenis](https://github.com/darkroomengineering/lenis). No GSAP. Animation runs on a custom spring solver and one shared requestAnimationFrame loop.
 
@@ -27,7 +27,7 @@ src/
     base/                  tokens, adaptive-root, reset, text, asset-error
     components/cta.css     angled CTA with flood fill
     effects/chequer.css
-    sections/              stack, hero, veil, menu-sheet, season, timeline, paddock, footer
+    sections/              stack, hero, veil, message, menu-sheet, season, timeline, paddock, footer
   js/
     config.js              ASSET_BASE_URL, asset(path)
     utils/                 dom ($, $$, mq, REDUCED, COARSE), math, css-units (px -> cqw), read-token, markup
@@ -46,7 +46,7 @@ src/
     hero-scene/            HeroScene class, shaders, constants/params, device tiers
     season/                lap trace renderer, map SVG builder, halftone dots
     data/                  track/map geometry, lap path, packed dot lattice
-    sections/              stack, menu-sheet, veil, hero, season, timeline, paddock, footer
+    sections/              stack, menu-sheet, veil, hero, message, season, timeline, paddock, footer
 ```
 
 ## How the pieces work
@@ -72,6 +72,8 @@ src/
 
 **The veil** fills the helmet silhouette to 70% while loading and to 100% when `HeroScene.onReady` fires, then fades and triggers the hero entrance (`handover`).
 
+**Message from Kimi** (`sections/message.js`). A `.msg-layer` 400lvh tall sticks to the top, so the section inside it stays pinned for three viewports before the season layer slides over. Progress comes from how far the next layer has travelled. Over that range the portrait card's `clip-path` shrinks from full bleed to a frame, the light field fades to olive, two quote marquees fade in behind the card, and then the slash and signature strokes draw in (`pathLength="1"` + dash offset). The beat timings are in `BEATS`, the card sizes in `FRAMES`, and the quote copy and signature paths in `QUOTE` and `STROKES` at the top of the file.
+
 **Season map.** The lap is drawn to a canvas (`season/lap.js`): a 6s ease-in-out-sine run that slows in corners (curvature-weighted timing), with a hot gradient head, a spark and marker pops. After the lap, the halftone dot map (`season/dots.js`) arms and reacts to the mouse with a crosshair reticle.
 
 ## Reusing parts in another project
@@ -85,5 +87,6 @@ src/
 
 ## Notes
 
+- Palette: lime accent (`#d2ff00`) on olive surfaces with a warm off-white background, all in `styles/base/tokens.css`. The serif marquee line uses Instrument Serif.
 - Content (timeline entries, calendar, stats, nav links) lives as data arrays at the top of each section module.
 - `RGBELoader` logs a deprecation warning in Three 0.185 (it suggests `HDRLoader`). It works as-is. This was left unchanged to match the original.

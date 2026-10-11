@@ -1,0 +1,143 @@
+/* "Message from Kimi" pin (js/sections/message.js): the layer is tall, the section inside it is one viewport. */
+.msg-layer {
+  height: 400lvh;
+}
+[data-message] {
+  position: relative;
+  height: 100lvh;
+  overflow: hidden;
+  isolation: isolate;
+  background: var(--surface-black);
+  color: var(--foreground-on-dark);
+}
+[data-message] .contour {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}
+.msg-light {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: var(--background);
+}
+.msg-rows {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  z-index: 2;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 0.1em;
+  font-size: clamp(3rem, 7vw, 8.5rem);
+  opacity: 0;
+  pointer-events: none;
+}
+.mq-row {
+  overflow: hidden;
+  white-space: nowrap;
+  line-height: 0.95;
+  text-transform: uppercase;
+}
+.mq-track {
+  display: inline-flex;
+  will-change: transform;
+}
+.mq-track span {
+  padding-right: 0.25em;
+}
+.mq-row.serif {
+  font-family: var(--font-serif);
+  color: var(--accent);
+  letter-spacing: -0.02em;
+}
+.mq-row.sans {
+  font-family: var(--font-display);
+  font-weight: 700;
+  color: var(--surface-soft);
+  letter-spacing: -0.02em;
+}
+.msg-card {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  overflow: hidden;
+  clip-path: inset(0 0);
+  will-change: clip-path;
+  background: var(--background);
+}
+.msg-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 52%;
+  transform-origin: 50% 50%;
+  mix-blend-mode: multiply;
+}
+.msg-tint {
+  position: absolute;
+  inset: 0;
+  background: var(--surface-black);
+  mix-blend-mode: multiply;
+  opacity: 0;
+}
+.msg-label {
+  position: absolute;
+  left: 50%;
+  top: max(4.5rem, 10lvh);
+  z-index: 4;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  opacity: 0;
+  text-transform: uppercase;
+}
+.msg-label b {
+  font-family: var(--font-display);
+  font-size: 2rem;
+  line-height: 0.8;
+  color: var(--accent);
+  letter-spacing: -0.06em;
+}
+.msg-label span {
+  font-size: var(--type-eyebrow);
+  font-weight: 700;
+  letter-spacing: var(--raw-tracking-eyebrow);
+}
+.msg-sign {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  z-index: 5;
+  width: min(72vw, 64rem);
+  height: auto;
+  transform: translate(-50%, -50%);
+  overflow: visible;
+  pointer-events: none;
+}
+.msg-sign path {
+  fill: none;
+  stroke: var(--accent);
+  stroke-width: 14;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: 1 1;
+  stroke-dashoffset: 1;
+  opacity: 0;
+}
+@media (max-width: 767px) {
+  .msg-layer {
+    height: 320lvh;
+  }
+  .msg-sign {
+    width: 92vw;
+  }
+  .msg-sign path {
+    stroke-width: 18;
+  }
+}

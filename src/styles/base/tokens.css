@@ -1,23 +1,24 @@
 /* Design tokens: raw palette/scale (--raw-*) mapped to semantic tokens. Change the semantic layer to re-skin. */
 :root {
-  --raw-color-ice-50: #f7fafb;
-  --raw-color-ice-100: #ebeef1;
-  --raw-color-ice-200: #dfe5e9;
-  --raw-color-steel-400: #b6c1c8;
-  --raw-color-ink-950: #090a0b;
-  --raw-color-ink-900: #0e0f14;
-  --raw-color-ink-800: #1b1d24;
-  --raw-color-ink-700: #2a2d36;
-  --raw-color-ink-alpha-35: rgb(9 10 11 / 0.35);
+  --raw-color-ice-50: #f4f4ef;
+  --raw-color-ice-100: #eaeae3;
+  --raw-color-ice-200: #dcddd3;
+  --raw-color-steel-400: #bcc1ae;
+  --raw-color-ink-950: #23271c;
+  --raw-color-ink-900: #2b3023;
+  --raw-color-ink-800: #373d2d;
+  --raw-color-ink-700: #474e3b;
+  --raw-color-ink-alpha-35: rgb(35 39 28 / 0.35);
   --raw-color-slate-500: #7a7a7a;
   --raw-color-slate-600: #4d4d4d;
   --raw-color-slate-900: #1e1e1e;
-  --raw-color-cyan-400: #02d2e3;
-  --raw-color-cyan-alpha-25: rgb(2 210 227 / 0.25);
+  --raw-color-lime-400: #d2ff00;
+  --raw-color-lime-alpha-25: rgb(210 255 0 / 0.25);
+  --raw-color-lime-alpha-12: rgb(210 255 0 / 0.12);
   --raw-color-stone-600: #535450;
   --raw-color-white-alpha-10: rgb(255 255 255 / 0.1);
   --raw-color-white-alpha-20: rgb(255 255 255 / 0.2);
-  --raw-color-ink-alpha-08: rgb(9 10 11 / 0.08);
+  --raw-color-ink-alpha-08: rgb(35 39 28 / 0.08);
   --raw-color-white-alpha-40: rgb(255 255 255 / 0.4);
   --raw-color-white: #ffffff;
   --raw-color-orange-500: #ff6b00;
@@ -70,8 +71,9 @@
   --timeline-rail: var(--raw-color-white-alpha-20);
   --paddock-contour: var(--raw-color-ink-alpha-08);
   --footer-contour: var(--raw-color-white-alpha-10);
-  --accent: var(--raw-color-cyan-400);
-  --accent-muted: var(--raw-color-cyan-alpha-25);
+  --accent: var(--raw-color-lime-400);
+  --accent-muted: var(--raw-color-lime-alpha-25);
+  --message-contour: var(--raw-color-lime-alpha-12);
   --type-impact: var(--raw-font-size-96);
   --type-display-lg: var(--raw-font-size-70);
   --type-display: var(--raw-font-size-52);
@@ -94,4 +96,5 @@
   --ease-plate: cubic-bezier(0.33, 0, 0, 1);
   --font-sans: 'Space Grotesk', system-ui, sans-serif;
   --font-display: 'Oswald', Impact, sans-serif;
+  --font-serif: 'Instrument Serif', 'Times New Roman', serif;
 }

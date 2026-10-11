@@ -33,7 +33,7 @@ export function initDots(canvas, section) {
     dot: parseRgb(readToken('--map-dot')),
     accent: parseRgb(readToken('--accent')),
     white: parseRgb(readToken('--foreground-on-dark')),
-    bright: [141, 243, 250],
+    bright: [236, 255, 160],
   };
 
   const { columns, rows, points, count } = DOTS;
