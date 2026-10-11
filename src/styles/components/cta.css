@@ -1,0 +1,60 @@
+/* Angled CTA button with flood fill on hover (.cta, shared .flood/.lbl/.arr used by .cta2 and .ft-cta). */
+.cta {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.6em;
+  font-size: var(--type-title);
+  height: 3.5rem;
+  width: 100%;
+  color: var(--accent);
+  text-transform: uppercase;
+  line-height: 0.9;
+}
+@media (min-width: 640px) {
+  .cta {
+    height: 2.5em;
+    width: 11em;
+  }
+}
+.cta .frame {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+.flood {
+  transform-box: fill-box;
+  transform-origin: left;
+  transform: scaleX(0);
+  transition: transform var(--duration-normal) var(--ease-plate);
+}
+a:hover .flood {
+  transform: scaleX(1);
+}
+.lbl {
+  position: relative;
+  transition: color var(--duration-normal);
+}
+a:hover .lbl {
+  color: var(--surface-black);
+}
+.arr {
+  position: relative;
+  fill: none;
+  stroke: var(--accent);
+  overflow: visible;
+  transition:
+    transform var(--duration-fast),
+    stroke var(--duration-normal);
+}
+.cta .arr {
+  width: 0.65em;
+  height: 0.5em;
+}
+a:hover .arr {
+  transform: translateX(0.25rem);
+  stroke: var(--surface-black);
+}

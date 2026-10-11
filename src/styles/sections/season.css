@@ -1,0 +1,194 @@
+/* "The season so far": map stage and stats plate. Sizes use cqw (container query width) against a 1440px artboard. */
+[data-season] {
+  container-type: inline-size;
+  position: relative;
+  isolation: isolate;
+  min-height: var(--season-h, 100lvh);
+  overflow: hidden;
+  background: var(--surface-black);
+  color: var(--foreground-on-dark);
+}
+@media (max-width: 1023px) {
+  [data-season] {
+    --gutter-min: 32px;
+    --type-min: 13px;
+    --copy-min-size: 17px;
+    --copy-min-w: 15rem;
+    --head-min: 6.6667cqw;
+    --plate-w: 277px;
+    --plate-h: 78px;
+    --plate-cell: 83px;
+    --plate-badge-gap: 11px;
+    --plate-globe-w: 37px;
+    --plate-globe-h: 23px;
+    --plate-stats-left: 16px;
+    --plate-stats-gap: 8px;
+    --plate-eyebrow: 12px;
+    --plate-body: 14px;
+  }
+}
+@media (max-width: 639px) {
+  [data-season] {
+    --head-min: 40px;
+    --head-air: 20px;
+    --season-h: 680px;
+  }
+}
+.stage-frame {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0, #000 10%, #000 90%, transparent 100%);
+  mask-image: linear-gradient(to bottom, transparent 0, #000 10%, #000 90%, transparent 100%);
+}
+@media (max-width: 1023px) {
+  .stage-frame {
+    -webkit-mask-image: none;
+    mask-image: none;
+  }
+}
+.stage {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 1440px;
+  height: 800px;
+  transform-origin: top left;
+}
+.map-box {
+  position: absolute;
+  left: 0;
+  top: -4.559px;
+  width: 1438.43px;
+  height: 809.11px;
+}
+.map-box canvas,
+.map-box svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  display: block;
+}
+.trace {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 1440px;
+  height: 800px;
+  display: block;
+}
+.season-col {
+  position: relative;
+  min-height: var(--season-h, 100lvh);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 4rem;
+  padding: 4.8611cqw 1.5rem 2rem;
+}
+@media (min-width: 640px) {
+  .season-col {
+    --season-gutter: max(2.2222cqw, var(--gutter-min, 0px));
+    padding: 4.8611cqw var(--season-gutter) var(--season-gutter);
+  }
+}
+.s-head {
+  color: var(--accent);
+  font-size: max(3.8194cqw, var(--head-min, 0px));
+  display: flex;
+  flex-direction: column;
+}
+.s-head .hl,
+.tl-head .hl,
+.pd-head .hl,
+.ft-head .hl {
+  justify-content: flex-start;
+}
+.stop {
+  display: inline-block;
+  opacity: 0;
+}
+.s-rule {
+  width: 1.6667cqw;
+  height: 0.1389cqw;
+  min-height: 2px;
+  background: var(--accent);
+  margin-top: max(1.9444cqw, var(--head-air, 0px));
+  transform-origin: left;
+  transform: scaleX(0);
+  opacity: 0;
+}
+.s-intro {
+  margin-top: max(2.0833cqw, var(--head-air, 0px));
+  width: max(16.1111cqw, var(--copy-min-w, 0px));
+  font-size: max(1.25cqw, var(--copy-min-size, 0px));
+  text-transform: uppercase;
+  line-height: 1.1;
+}
+.splate {
+  position: relative;
+  align-self: flex-end;
+  width: var(--plate-w, 19.2361cqw);
+  height: var(--plate-h, 5.4167cqw);
+  display: grid;
+  grid-template-columns: var(--plate-cell, 5.7639cqw) 1fr;
+  opacity: 0;
+}
+.splate > svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+.badge {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--plate-badge-gap, 0.7639cqw);
+}
+.globe {
+  width: var(--plate-globe-w, 2.5694cqw);
+  height: var(--plate-globe-h, 1.5972cqw);
+  overflow: visible;
+  fill: none;
+  stroke: var(--accent);
+}
+.wm {
+  display: flex;
+  gap: 0.3em;
+  font-size: var(--plate-eyebrow, max(0.8333cqw, var(--type-min, 0px)));
+  line-height: 0.72;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+}
+.wm .tx {
+  column-gap: 0;
+}
+.pstats {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-left: var(--plate-stats-left, 1.1111cqw);
+  gap: var(--plate-stats-gap, 0.5556cqw);
+  text-transform: uppercase;
+  line-height: 0.72;
+  font-size: var(--plate-body, max(0.9722cqw, var(--type-min, 0px)));
+}
+.pstats > div {
+  display: flex;
+  gap: 0.35em;
+}
+.pstats dt {
+  color: var(--accent);
+}
+.pstats dd {
+  flex: 1;
+  white-space: nowrap;
+  flex-wrap: nowrap;
+}

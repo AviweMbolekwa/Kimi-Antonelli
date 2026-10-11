@@ -1,0 +1,297 @@
+/* "From the paddock". */
+.pd {
+  container-type: inline-size;
+  position: relative;
+  isolation: isolate;
+  min-height: var(--block-h, 100lvh);
+  width: 100%;
+  overflow: hidden;
+  background: var(--background);
+  color: var(--foreground);
+}
+.contour {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  display: block;
+}
+.pd-band {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: calc(11.7361cqw * var(--band-scale, 1));
+  background: var(--surface-black);
+}
+.pd-fig {
+  position: absolute;
+  inset: 0;
+  z-index: 10;
+  pointer-events: none;
+}
+.pd-fig-in {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+.pd-fig img {
+  position: absolute;
+  bottom: var(--fig-lift, 0px);
+  left: var(--fig-x-override, 65.6917%);
+  transform: translateX(-50%);
+  height: min(calc(102.0363% * var(--fig-fit, 1)), var(--fig-cap, 100000px));
+  width: auto;
+  aspect-ratio: 1.15881;
+  object-fit: cover;
+  user-select: none;
+}
+.pd-melt {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 10;
+  height: calc(11.7361cqw * var(--band-scale, 1));
+  background: linear-gradient(to bottom, rgb(9 10 11 / 0) 0%, var(--surface-black) var(--band-fade, 38.685%));
+  pointer-events: none;
+}
+.pd-head {
+  position: absolute;
+  z-index: 20;
+  left: var(--head-left, 2.2222cqw);
+  top: var(--head-top, 2.2222cqw);
+  font-size: max(max(6.6667cqw, var(--type-min, 0px)), var(--head-min, 0px));
+  display: flex;
+  flex-direction: column;
+}
+.pd-intro {
+  position: absolute;
+  z-index: 20;
+  left: var(--intro-left, 2.2222cqw);
+  bottom: var(--intro-bottom, calc(11.7361cqw * var(--band-scale, 1) + 2.2222cqw));
+  width: max(23.4722cqw, var(--intro-min-w, 0px));
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--intro-gap, 2.7778cqw);
+}
+.pd-intro p {
+  text-transform: uppercase;
+  line-height: 1.1;
+  font-size: max(1.25cqw, var(--copy-min-size, 0px));
+}
+.cta2 {
+  --h: var(--cta-h, 3.4722cqw);
+  position: relative;
+  display: block;
+  height: var(--h);
+  width: calc(var(--h) * 4.34);
+  color: var(--accent);
+  text-transform: uppercase;
+  line-height: 0.9;
+  opacity: 0;
+}
+.cta2 .frame {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+.cta2 .inner {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: calc(var(--h) * 24 / 50);
+  display: flex;
+  align-items: center;
+  gap: calc(var(--h) * 32 / 50);
+  font-size: calc(var(--h) * 20 / 50);
+}
+.cta2 .arr {
+  width: calc(var(--h) * 13.71 / 50);
+  height: calc(var(--h) * 10.71 / 50);
+}
+.pd-panels {
+  position: absolute;
+  inset: 0;
+  z-index: 20;
+  pointer-events: none;
+}
+.brk {
+  position: absolute;
+  fill: none;
+  overflow: visible;
+  transition:
+    left var(--duration-plate) var(--ease-plate),
+    top var(--duration-plate) var(--ease-plate);
+}
+.pd-col {
+  position: absolute;
+  text-transform: uppercase;
+  line-height: 0.9;
+  display: flex;
+  flex-direction: column;
+}
+.pd-col .muted {
+  color: var(--foreground-muted);
+}
+.st-row {
+  display: flex;
+  align-items: flex-end;
+  opacity: 0;
+}
+.st-rule {
+  height: 1px;
+  background: var(--foreground-muted);
+  transform-origin: left;
+  transform: scaleX(0);
+}
+.st-row .fig {
+  font-family: var(--font-display);
+  font-weight: 500;
+  line-height: 0.72;
+}
+.st-row .fig .tx {
+  column-gap: 0;
+}
+.strip {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 20;
+  height: calc(11.7361cqw * var(--band-scale, 1));
+  color: var(--foreground-on-dark);
+}
+.link {
+  position: absolute;
+  height: 1px;
+  transform-origin: left;
+  transform: scaleX(0);
+}
+.card {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  text-transform: uppercase;
+  opacity: 0;
+  color: var(--foreground-on-dark-muted);
+}
+.card.live {
+  color: var(--accent);
+}
+.card .nm {
+  font-family: var(--font-display);
+  font-weight: 700;
+  line-height: 0.95;
+  color: var(--foreground-on-dark);
+  opacity: 0;
+  white-space: nowrap;
+}
+.mark {
+  position: absolute;
+  transform: translateX(-50%);
+  display: flex;
+  justify-content: center;
+  opacity: 0;
+}
+.mark svg {
+  overflow: visible;
+}
+.mark b {
+  font-family: var(--font-display);
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #fff;
+  line-height: 1;
+}
+.live-brk {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0;
+}
+@media (min-width: 640px) and (max-width: 1023px) {
+  .pd {
+    --type-min: 13px;
+    --copy-min-size: 17px;
+    --stats-row-min: 42px;
+    --fig-cap: 118.75cqw;
+    --fig-x-override: 65.7%;
+    --cta-h: 50px;
+    --band-scale: 1.75;
+    --cal-spread: 1.75;
+    --cal-mark-drop: 8cqw;
+    --cal-card-drop: 1.3cqw;
+    --panel-u: 1px;
+    --stats-rule-top: 16px;
+    --stats-rule-bottom: 11px;
+    --stats-drop: 2.86cqw;
+    --stats-col-w: 170px;
+    --intro-min-w: 280px;
+    --stats-left: calc(2.2222cqw + 13px);
+    --stats-frame-left: 2.2222cqw;
+    --stats-frame-right: calc(2.2222cqw + 195px);
+    --stats-stretch: calc(var(--panel-u) * -62);
+    --meet-frame-left: calc(100% - 2.2222cqw - 131px);
+    --meet-frame-right: calc(100% - 2.2222cqw);
+    --meet-frame-top: 2.8646cqw;
+    --meet-frame-bottom: calc(2.8646cqw + 73px);
+    --meet-left: calc(100% - 2.2222cqw - 118px);
+    --meet-top: calc(2.8646cqw + 11px);
+    --bracket-drop: 1.7cqw;
+    --bracket-stretch: 5.9cqw;
+    --head-min: 6.6667cqw;
+  }
+}
+@media (max-width: 639px) {
+  .pd {
+    --block-h: 1062px;
+    --intro-bottom: 139px;
+    --head-left: 24px;
+    --intro-left: 24px;
+    --head-top: 24px;
+    --intro-min-w: 320px;
+    --intro-gap: 24px;
+    --band-fade: 60px;
+    --cta-h: 50px;
+    --panel-u: 1px;
+    --fig-cap: 599px;
+    --fig-x-override: 48.5%;
+    --fig-lift: 328px;
+    --band-scale: 8.48;
+    --head-min: 40px;
+    --type-min: 13px;
+    --copy-min-size: 17px;
+  }
+  .pd-panels {
+    display: none;
+  }
+  .pd-intro p {
+    color: var(--foreground-on-dark);
+  }
+  .strip {
+    height: auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.75rem 1.25rem;
+    padding: 1.5rem 4%;
+    border-top: 1px solid rgb(255 255 255 / 0.15);
+  }
+  .strip .card {
+    position: static !important;
+    width: auto !important;
+  }
+  .strip .card.early,
+  .strip .link,
+  .strip .mark,
+  .strip .live-brk,
+  .strip .pulse {
+    display: none;
+  }
+}

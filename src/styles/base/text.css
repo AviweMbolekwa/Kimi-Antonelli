@@ -1,0 +1,26 @@
+/* Text engine units (.tx/.tw/.u, driven by js/animations/text.js), hover accent (.ha) and display type (.disp). */
+.tx {
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: 0.3em;
+}
+.tw {
+  display: inline-flex;
+  white-space: nowrap;
+}
+.u {
+  display: inline-block;
+  opacity: 0;
+}
+.ha {
+  transition: color var(--duration-fast) var(--ease-entrance);
+}
+.ha:hover {
+  color: var(--accent);
+}
+.disp {
+  font-family: var(--font-display);
+  font-weight: 700;
+  text-transform: uppercase;
+  line-height: 0.95;
+}

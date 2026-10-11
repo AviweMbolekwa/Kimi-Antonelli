@@ -1,0 +1,72 @@
+/* Mobile/tablet menu sheet. */
+.sheet {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  background: var(--background);
+  padding: 1.5rem 2rem;
+  display: flex;
+  flex-direction: column;
+  opacity: 0;
+}
+.sheet-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.sheet-top img {
+  height: 1.5rem;
+  width: auto;
+}
+.sheet-close {
+  position: relative;
+  width: 2.5rem;
+  height: 2.5rem;
+  margin-right: -0.5rem;
+  background: none;
+  border: 0;
+  cursor: pointer;
+}
+.sheet-close i {
+  position: absolute;
+  left: 0.5rem;
+  top: 50%;
+  width: 1.5rem;
+  height: 1px;
+  background: var(--foreground);
+}
+.sheet-close i:first-child {
+  transform: rotate(45deg);
+}
+.sheet-close i:last-child {
+  transform: rotate(-45deg);
+}
+.sheet nav {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.sheet ul {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.sheet li {
+  opacity: 0;
+}
+.sheet a {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: var(--type-heading);
+  text-transform: uppercase;
+  line-height: 0.95;
+}
+@media (min-width: 640px) {
+  .sheet ul {
+    gap: 1.5rem;
+  }
+  .sheet a {
+    font-size: var(--type-display);
+  }
+}

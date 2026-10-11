@@ -1,0 +1,50 @@
+/* Fluid root font-size per breakpoint, plus hero/season type scaling between 1441px and 1920px. */
+html {
+  font-size: 16px;
+}
+@media (max-width: 1920px) {
+  html {
+    font-size: 0.833333vw;
+  }
+}
+@media (max-width: 1440px) {
+  html {
+    font-size: 1.111111vw;
+  }
+}
+@media (max-width: 1279px) {
+  html {
+    font-size: 16px;
+  }
+}
+@media (min-width: 1441px) and (max-width: 1920px) {
+  [data-hero] {
+    --hero-base: calc(1920 / 1440);
+    --type-impact: calc(6rem * var(--hero-base));
+    --type-display-lg: calc(4.375rem * var(--hero-base));
+    --type-display: calc(3.25rem * var(--hero-base));
+    --type-heading: calc(2.375rem * var(--hero-base));
+    --type-title: calc(1.25rem * var(--hero-base));
+    --type-lead: calc(1.125rem * var(--hero-base));
+    --type-label: calc(1rem * var(--hero-base));
+    --type-body: calc(0.875rem * var(--hero-base));
+    --type-eyebrow: calc(0.75rem * var(--hero-base));
+  }
+  [data-hero] [data-hero-panels] {
+    width: calc(13.625rem * var(--hero-base, 1));
+  }
+  [data-hero] [data-hero-stats] {
+    width: calc(10.75rem * var(--hero-base, 1));
+  }
+  [data-hero] [data-hero-map] {
+    height: calc(3.125rem * var(--hero-base, 1));
+    width: calc(4.875rem * var(--hero-base, 1));
+  }
+  [data-season] {
+    --season-base: calc(1920 / 1440);
+    --type-display-sm: calc(3.4375rem * var(--season-base));
+    --type-lead: calc(1.125rem * var(--season-base));
+    --type-body: calc(0.875rem * var(--season-base));
+    --type-eyebrow: calc(0.75rem * var(--season-base));
+  }
+}

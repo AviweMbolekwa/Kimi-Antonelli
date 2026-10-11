@@ -1,0 +1,278 @@
+/* "From karts to F1" timeline. */
+.tline {
+  container-type: inline-size;
+  position: relative;
+  isolation: isolate;
+  width: 100%;
+  background: var(--surface-black);
+  color: var(--foreground-on-dark);
+  --gutter: max(2.2222cqw, var(--gutter-min, 0px));
+  --bottom-pad: 10.4167cqw;
+  --top-pad: 11.7361cqw;
+  padding-bottom: 10.4167vw;
+}
+@media (max-width: 1023px) {
+  .tline {
+    overflow-x: clip;
+    --copy-min-size: 17px;
+    --head-min: 6.6667cqw;
+    --head-w-min: 82cqw;
+    --year-min: 30px;
+    --copy-min-w: 200px;
+    --rail-top: calc(11.7361cqw + var(--top-pad-extra, 0px));
+    padding-bottom: 5vw;
+  }
+}
+@media (min-width: 640px) and (max-width: 1023px) {
+  .tline {
+    --top-pad-extra: 16cqw;
+    --head-top: 10.4167cqw;
+  }
+}
+@media (max-width: 639px) {
+  .tline {
+    --head-min: 40px;
+    --top-pad-extra: 15cqw;
+    --copy-min-w: 320px;
+    --gutter-min: 24px;
+  }
+}
+@media (min-width: 640px) {
+  .tline {
+    --copy-max-w: 26.9444cqw;
+  }
+}
+.tl-wrap {
+  position: relative;
+  width: 100%;
+  padding-top: calc(var(--top-pad) + var(--top-pad-extra, 0px));
+}
+.tl-head {
+  position: absolute;
+  z-index: 20;
+  top: var(--head-top, var(--gutter));
+  right: var(--gutter);
+  width: max(20.3472cqw, var(--head-w-min, 0px));
+  color: var(--accent);
+  font-size: max(3.8194cqw, var(--head-min, 0px));
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  text-align: right;
+}
+.tl-head .hl {
+  justify-content: flex-end;
+}
+@media (max-width: 1023px) {
+  .tl-head {
+    right: auto;
+    left: 50%;
+    transform: translateX(-50%);
+    align-items: center;
+    text-align: center;
+    flex-direction: row;
+    justify-content: center;
+    gap: 0.28em;
+  }
+  .tl-head .hl {
+    justify-content: center;
+  }
+}
+@media (max-width: 639px) {
+  .tl-head {
+    left: var(--gutter);
+    transform: none;
+    justify-content: flex-start;
+    width: auto;
+  }
+}
+.rail {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+  width: 1.1111cqw;
+  top: var(--rail-top, 0px);
+  pointer-events: none;
+}
+.rail svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+.row {
+  position: relative;
+  width: 100%;
+  transition: opacity var(--duration-plate) var(--ease-plate);
+}
+.row.centre {
+  height: 32.0833cqw;
+}
+.row.side {
+  height: 15.0694cqw;
+}
+@media (hover: hover) {
+  .tline.dim .row:not(.hot) {
+    opacity: 0.3;
+  }
+}
+.lay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+.lay-in {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+.plate {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  pointer-events: auto;
+}
+.row.side .plate {
+  width: 23.125cqw;
+}
+.row.centre .plate {
+  width: 49.3056cqw;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.row.side.left .plate {
+  left: var(--gutter);
+}
+.row.side.right .plate {
+  right: var(--gutter);
+}
+.pfill {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  background: var(--timeline-fill);
+  clip-path: url(#plate-clip);
+  transition: inset var(--duration-plate) var(--ease-plate);
+}
+.plate:hover .pfill {
+  inset: 5%;
+}
+.pslot {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: -10%;
+  height: 100%;
+}
+.pslot img {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 110%;
+  object-fit: cover;
+  object-position: top;
+}
+.poutline {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  fill: none;
+  stroke: var(--timeline-outline);
+}
+.year {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 20;
+  pointer-events: none;
+  font-family: var(--font-display);
+  font-weight: 700;
+  line-height: 0.95;
+  text-transform: uppercase;
+  color: var(--accent);
+  font-size: max(2.5cqw, var(--year-min, 0px));
+}
+.year .tx {
+  column-gap: 0;
+}
+.tcopy {
+  position: absolute;
+  left: 70.8333cqw;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 20;
+  pointer-events: none;
+  text-transform: uppercase;
+  line-height: 1.1;
+  font-size: max(1.25cqw, var(--copy-min-size, 0px));
+  opacity: 0;
+}
+.tcopy b {
+  font-weight: 700;
+}
+@media (max-width: 639px) {
+  .tl-wrap {
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+    padding-left: var(--gutter);
+    padding-right: var(--gutter);
+  }
+  .row {
+    height: auto !important;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+  .lay {
+    position: relative;
+    inset: auto;
+    pointer-events: auto;
+  }
+  .lay-in {
+    height: auto;
+    display: flex;
+    flex-direction: column;
+  }
+  .plate {
+    position: relative;
+    width: 82% !important;
+    aspect-ratio: 710 / 462;
+    left: auto !important;
+    right: auto !important;
+    transform: none !important;
+  }
+  .row.odd .plate,
+  .row.odd .year {
+    margin-left: auto;
+  }
+  .year {
+    position: relative;
+    left: auto;
+    top: -28.8cqw;
+    transform: none;
+    height: 0;
+    width: 82%;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+  }
+  .year .tx {
+    justify-content: center;
+  }
+  .tcopy {
+    position: relative;
+    left: auto;
+    top: auto;
+    transform: none !important;
+  }
+  .rail {
+    display: none;
+  }
+}

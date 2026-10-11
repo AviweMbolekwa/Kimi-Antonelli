@@ -1,0 +1,24 @@
+/* Sticky stacked layers (js/sections/stack.js). */
+.stack {
+  position: relative;
+  background: var(--surface-black);
+}
+.layer {
+  position: sticky;
+  top: 0;
+}
+.layer-inner {
+  transform-origin: center;
+}
+.shade {
+  position: absolute;
+  inset: 0;
+  background: var(--surface-black);
+  opacity: 0;
+  pointer-events: none;
+  z-index: 60;
+}
+.layer-last {
+  position: relative;
+  z-index: 20;
+}
