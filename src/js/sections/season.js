@@ -69,7 +69,7 @@ export function initSeason() {
   const palette = {
     accent: parseRgb(readToken('--accent')),
     white: parseRgb(readToken('--foreground-on-dark')),
-    bright: [236, 255, 160],
+    bright: [141, 243, 250],
   };
   const lap = makeLap(context, palette);
   const showLap = (v) => {

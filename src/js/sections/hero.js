@@ -110,7 +110,9 @@ export function initHero() {
   };
   bindPointer();
 
-  const COVERED_AFTER = 1.15;
+  // the hero layer is pinned for the message beat, so it is only covered once the scroll passes its full height
+  const layer = section.closest('[data-layer]');
+  const COVERED_AFTER = 0.15;
   let inView = true,
     tail = 10;
   new IntersectionObserver((es) => {
@@ -124,7 +126,7 @@ export function initHero() {
         if (tail <= 0) return;
         tail -= 1;
       }
-      if (window.scrollY > window.innerHeight * COVERED_AFTER) return;
+      if (window.scrollY > layer.offsetHeight + window.innerHeight * COVERED_AFTER) return;
       scene.update(t);
     },
     () => tier.frameInterval,
