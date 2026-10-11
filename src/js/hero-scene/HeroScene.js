@@ -439,7 +439,7 @@ export class HeroScene {
         );
       });
     const dracoLoader = new DRACOLoader();
-    dracoLoader.setDecoderPath('/draco/');
+    dracoLoader.setDecoderPath(`${import.meta.env.BASE_URL}draco/`);
     const gltfLoader = new GLTFLoader();
     gltfLoader.setDRACOLoader(dracoLoader);
     const tag = (promise, url) =>
