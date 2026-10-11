@@ -54,7 +54,7 @@
   bottom: 0;
   z-index: 10;
   height: calc(11.7361cqw * var(--band-scale, 1));
-  background: linear-gradient(to bottom, rgb(9 10 11 / 0) 0%, var(--surface-black) var(--band-fade, 38.685%));
+  background: linear-gradient(to bottom, color-mix(in srgb, var(--surface-black) 0%, transparent) 0%, var(--surface-black) var(--band-fade, 38.685%));
   pointer-events: none;
 }
 .pd-head {
